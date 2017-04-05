@@ -8,5 +8,8 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^uti_list', views.uti_list, name='uti_list'),
+    url(r'^uti_list',views.uti_list, name='uti_list'),
+    url(r'^uti_new', views.uti_new, name='uti_new'),
+    url(r'cherche',views.chercher),
 ]
+

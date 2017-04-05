@@ -1,11 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="{% static 'css/formulaireEsig.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+        //en attendant de chargement de la page
+        $(document).ready(
+            function () {
+                $('#cherche').keyup
+                (
+                    function () {
+                        //envoyer un formulaire
+                        $.post(
+                            {
+                                url:'cherche',
+                                data:
+                                    {
+                                        //définition de variable et passer par post
+                                        'text_cherche' : $('#cherche').val(),
+                                        //pour la sécurité du formulaire
+                                        'csrfmiddlewaretoken' : $('input[name = csrfmiddlewaretoken]').val()
+                                    },
+                                success : function(data)
+                                {
+                                    //remplir les donneés en parmatère
+                                    $('#resultat-chercher').html(data);
+                                }
 
-{% block content %}
-<h1>Ajouter un utilisateur</h1>
-<form method="POST" class="post-form">{% csrf_token %}
-    {{ form.as_p }}
+                            }
+                        )
+                    }
+                );
+            }
+        );
+    </script>
 
-    <p>Login:</p>
+<!--Utilisation d'ajax-->
 
-    <button type="submit" class="save btn btn-default">Enregistrer</button>
-</form>
-{% endblock %}
+
+</head>
+<body >
+<h1>Liste des utilisateurs</h1>
+<div>
+    <a href="{% url 'formulaireEsig.views.uti_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+    <p>Cherche : <input type="text" id="cherche" name="cherche"/> </p> {% csrf_token %}
+</div>
+
+<hr >
+
+<div id="resultat-chercher" >
+    <table border="2" width="80%">
+       <tr>
+           <th > NOM </th>
+           <th> PRENOM </th>
+           <th> EMAIL</th>
+       </tr>
+        {% for sie_utilisateur in sie_utilisateur %}
+       <tr >
+
+           <td>{{ sie_utilisateur.UTI_NOM }}</td>
+           <td>{{ sie_utilisateur.UTI_PRENOM }}</td>
+           <td>{{ sie_utilisateur.UTI_EMAIL }}</td>
+
+       </tr>
+        {% endfor %}
+   </table>
+
+
+</div>
+</body>
+</html>
+
