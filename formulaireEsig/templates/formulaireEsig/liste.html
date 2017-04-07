@@ -1,0 +1,18 @@
+
+    <table border="2" width="80%">
+        <tr>
+            <th > GENRE </th>
+            <th > NOM </th>
+            <th> PRENOM </th>
+            <th> EMAIL</th>
+        </tr>
+        {% for sie_utilisateur in sie_utilisateur %}
+        <tr >
+            <td>{{ sie_utilisateur.UTI_CIVILITE }}</td>
+            <td>{{ sie_utilisateur.UTI_NOM }}</td>
+            <td>{{ sie_utilisateur.UTI_PRENOM }}</td>
+            <td>{{ sie_utilisateur.UTI_EMAIL }}</td>
+
+        </tr>
+        {% endfor %}
+    </table>

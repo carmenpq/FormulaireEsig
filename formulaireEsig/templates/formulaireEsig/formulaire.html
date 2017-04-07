@@ -6,9 +6,34 @@
 {% block content %}
 
 <h1>Ajouter un utilisateur</h1>
-<form method="POST" class="post-form">{% csrf_token %}
-    {{ form.as_p }}
+<div id="form">
+    <form method="POST" class="post-form">{% csrf_token %}
 
-    <button type="submit" class="save btn btn-default">Enregistrer</button>
-</form>
+
+        <p>
+            <label for="id_Login">Login</label> : <input id="id_Login"  type="text" name="UTI_LOGIN" style="margin-left: 80px" />
+        </p>
+        <p>
+            <label for="id_mdp">Mot de passe</label> : <input id="id_mdp" type="text" name="UTI_MDP" style="margin-left: 30px"/>
+        </p>
+        <p>
+            <label for="id_nom">Nom</label> : <input id="id_nom" type="text" name="UTI_NOM" style="margin-left: 88px"/>
+        </p>
+        <p>
+            <label for="id_prenom">Prénom</label> : <input id="id_prenom" type="text" name="UTI_PRENOM" style="margin-left: 67px"/>
+        </p>
+        <p>
+            <label for="id_civ">Civilité</label> :  <select id="id_civ"name="UTI_CIVILITE" style="margin-left: 74px">
+            <option value="F">F</option>
+            <option value="H">H</option>
+
+        </select>
+        </p>
+        <p>
+            <label for="id_email">Email</label> : <input id="id_email" type="text" name="UTI_EMAIL" style="margin-left: 82px"/>
+        </p>
+<br/> <br/>
+        <button type="submit" class="save btn btn-default" style="margin-left:230px " >Enregistrer</button>
+    </form>
+</div>
 {% endblock %}

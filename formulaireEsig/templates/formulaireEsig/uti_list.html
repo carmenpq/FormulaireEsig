@@ -20,7 +20,7 @@
                                 data:
                                     {
                                         //définition de variable et passer par post
-                                        'text_cherche' : $('#cherche').val(),
+                                        'mot' : $('#cherche').val(),
                                         //pour la sécurité du formulaire
                                         'csrfmiddlewaretoken' : $('input[name = csrfmiddlewaretoken]').val()
                                     },
@@ -52,25 +52,9 @@
 <hr >
 
 <div id="resultat-chercher" >
-    <table border="2" width="80%">
-       <tr>
-           <th > NOM </th>
-           <th> PRENOM </th>
-           <th> EMAIL</th>
-       </tr>
-        {% for sie_utilisateur in sie_utilisateur %}
-       <tr >
-
-           <td>{{ sie_utilisateur.UTI_NOM }}</td>
-           <td>{{ sie_utilisateur.UTI_PRENOM }}</td>
-           <td>{{ sie_utilisateur.UTI_EMAIL }}</td>
-
-       </tr>
-        {% endfor %}
-   </table>
-
-
+    {% include "formulaireEsig/liste.html" %}
 </div>
+
 </body>
 </html>
 

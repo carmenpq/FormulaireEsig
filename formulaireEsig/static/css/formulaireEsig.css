@@ -6,7 +6,11 @@ h1  {
 table,th,td{
     color: #4c4aa6;
 }
-div{
+div, #form {
     margin-top: 50px;
-    margin-left: 150px;
+    margin-left: 180px;
+}
+#pseudo,#pseudo2,#pseudo3,#pseudo4,#pseudo5,#pseudo6{
+    margin-right: 300px;
+    color: #7CA0C7;
 }
